@@ -66,5 +66,17 @@ Bio-Earth cuenta con las siguientes funciones:
 ![This is an image](https://cdn.discordapp.com/attachments/546712576189399052/925150102933344286/cat2.png)
 
 9. Vista Previa de Noticia
+   - Título
+   - Categoría
+   - Cuerpo
+   - Acerca del Escritor/a
+   - Likes/Dislikes
+   - Comentarios
 
 ![This is an image](https://cdn.discordapp.com/attachments/546712576189399052/925150597613764739/pag_no.png)
+
+9. Crear Comentario
+   - Nombre de Usuario
+   - Comentario
+
+![This is an image](https://cdn.discordapp.com/attachments/546712576189399052/925151263241433178/comen.png)
