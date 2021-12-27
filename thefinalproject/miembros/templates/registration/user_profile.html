@@ -1,0 +1,28 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<h1 class="display-5 fw-bold">Perfil de {{ page_user.user.first_name }} {{ page_user.user.last_name }}</h1>
+
+<div class="container">
+    <body class="text-center">
+      <form>
+        {% if page_user.profile_pic %}
+        <img src="{{ page_user.profile_pic.url }}" class="img-fluid rounded-circle" alt="..." width="200" height="200" />
+        {% else %}
+        <img src="{% static 'bioblog/images/imguserdefault.png' %}" class="img-fluid rounded-circle" alt="..." width="200" height="200" />
+        {% endif %}
+        <h1 class="h3 mb-3 fw-normal">{{ page_user.user.first_name }} {{ page_user.user.last_name }}</h1>
+        <p class="card-text">{{ page_user.user.profile.bio }}</p>
+        
+        <p class="mt-5 mb-3">
+            {% if page_user.website_url %}
+		    <a href="{{ page_user.website_url }}">  Website</a>  
+	        {% endif %}
+            {% if page_user.github_url %}
+		    <a href="{{ page_user.github_url }}">  Github</a>  
+	        {% endif %}
+        </p>
+      </form>
+    </body>
+</div>
+
+{% endblock %}

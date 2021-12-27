@@ -1,0 +1,28 @@
+{% extends 'base.html' %} {% block title %}Crear Nuevo Post{% endblock %} {% block content %} {% if user.is_authenticated %}
+<div class="container">
+    <div class="px-4 py-3 my-4 text-justify">
+        <h1 class="display-5 fw-bold text-center">Añadir Post</h1>
+        <div class="mx-auto">
+            <span class="navbar-toggler-icon"></span>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %} {{ form.media }} {{ form.as_p }}
+                <input class="btn btn-primary" type="submit" value="Añadir Post" />
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    var name = "{{ user.id }}";
+    document.getElementById("elder").value = name;
+</script>
+
+{% else %}
+
+<div class="container">
+    <div class="px-4 py-3 my-4 text-center">
+        <h1 class="display-5 fw-bold">No estás permitido para esta acción</h1>
+    </div>
+</div>
+
+{% endif %} {% endblock %}

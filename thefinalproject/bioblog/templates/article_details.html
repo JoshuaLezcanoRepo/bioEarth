@@ -1,0 +1,95 @@
+{% extends 'base.html' %} {% load static %} {% block title %}{{post.title}} - {{post.title_tag}}{% endblock %} {% block content %}
+<div class="container">
+    <div class="px-4 py-3 my-4 text-justify">
+        {% if post.header_image %} <img src="{{ post.header_image.url }}" class="img-fluid" /> {% endif %} <span class="navbar-toggler-icon"></span>
+        <h1 class="display-5 fw-bold">{{post.title}}</h1>
+        <a href="{% url 'category' post.category|slugify %}">
+        <div class="badge bg-primary text-wrap">{{ post.category }}</div></a>
+        <div class="mx-auto">
+            <span class="navbar-toggler-icon"></span>
+            <figcaption class="blockquote-footer">
+                {% if post.author.profile.profile_pic %} <img src="{{ post.author.profile.profile_pic.url }}" alt="mdo" width="40" height="40" class="rounded-circle" /> {% else %}
+                <img src="{% static 'bioblog/images/imguserdefault.png' %}" alt="mdo" width="40" height="40" class="rounded-circle" /> {% endif %} Redacción hecha por: {{ post.author.first_name }} {{ post.author.last_name }} - Publicado el
+                {{ post.post_date|date:'d F Y'}} - Likes: {{ total_likes }}
+            </figcaption>
+            <p class="lead mb-4 fw-normal fs-6">{{ post.body|safe }}</p>
+        </div>
+    </div>
+
+    <div class="container ">
+        <div class="card text-center rounded-start">
+            <div class="card-header">
+            Acerca del Escritor/a
+            </div>
+            <div class="card-body shadow p-3">
+                {% if post.author.profile.profile_pic %}
+            <img src="{{ post.author.profile.profile_pic.url }}" class="img-fluid rounded-circle" alt="..." width="200" height="200" />
+            {% else %}
+            <img src="{% static 'bioblog/images/imguserdefault.png' %}" class="img-fluid rounded-circle" alt="..." width="200" height="200" />
+            {% endif %}
+            <h5 class="card-title">{{ post.author.first_name }} {{ post.author.last_name }}</h5>
+            <p class="card-text">{{ user.profile.bio }}</p>
+            <div class="badge bg-primary text-wrap" style="width: 6rem;">
+                <a href=" {% url 'show_profile_page' post.author.profile.id %} " class="text-light">Profile Page</a>
+              </div>
+              <div class="badge bg-primary text-wrap" style="width: 6rem;">
+                        {% if post.author.profile.website_url %}
+                        <a href=" {{ post.author.profile.website_url }} " class="text-light">Website</a></div>
+                        <div class="badge bg-primary text-wrap" style="width: 6rem;">
+                        {% endif %} {% if post.author.profile.github_url %}
+                        <a href=" {{ post.author.profile.github_url }} " class="text-light">GitHub</a></div>
+                        {% endif %}
+        </div>
+    </div>
+    <span class="navbar-toggler-icon"></span>
+    <div class="card shadow p-3">
+
+        {% if not post.comments.all %}<h5 class="text-center">No hay comentarios</h5><a
+            href=" {% url 'add_comment' post.pk %} " class="btn btn-primary mb-2 text-center">Sé el primero</a>
+        {% else %} {% for comment in post.comments.all %}
+        <div class="card mb-4">
+            <div class="card-body">
+                <p>{{ comment.name }} - {{ comment.date_added }}</p>
+                <strong>{{ comment.body }}</strong>
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex flex-row align-items-center">
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <a href=" {% url 'add_comment' post.pk %} " class="btn btn-primary mb-2 text-center">Añadir Comentario</a>
+        {% endif %}
+    </div>
+    </div>
+    </div>
+    <span class="navbar-toggler-icon"></span>
+
+    <div class="container text-center">
+        <div class="btn-group" role="group" aria-label="Basic outlined example">
+            <a type="button" class="btn btn-outline-primary" href="{% url 'home' %}">Atrás</a>
+            <form action="{% url 'like_post' post.pk %}" method="POST">
+                {% csrf_token %}
+                {% if user.is_authenticated %}
+                {% if liked %}
+                <button type="submit" , name="post_id" , value="{{ post.id }}" ,
+                    class="btn btn-outline-danger">Unlike</button>
+                {% else %}
+                <button type="submit" , name="post_id" , value="{{ post.id }}" ,
+                    class="btn btn-outline-primary">Like</button>
+                {% endif %}
+                {% else %}
+                <a type="button" class="btn btn-outline-primary" href="{% url 'login' %}">Inicia Sesión para dar Me
+                    Gusta</a>
+                {% endif %}
+            </form>
+            {% if user.is_authenticated %} {% if user.id == post.author.id %}
+            <a type="button" class="btn btn-outline-primary" href="{% url 'update_post' post.pk %}">Editar Post</a>
+            <a type="button" class="btn btn-outline-primary" href="{% url 'delete_post' post.pk %} ">Eliminar Post</a>
+            {% endif %} {% endif %}
+        </div>
+    </div>
+</div>
+<span class="navbar-toggler-icon"></span>
+    {% endblock %}
+

@@ -1,0 +1,19 @@
+{% extends 'base.html' %} {% block title %}Registrarse{% endblock %} {% block content %}
+
+<div class="container">
+    <div class="px-4 py-3 my-4 text-justify">
+        <h1 class="display-5 fw-bold text-center">Registrarse</h1>
+        <div class="mx-auto">
+            <span class="navbar-toggler-icon"></span>
+            <form method="post">
+                <div class="d-grid gap-2">
+                {% csrf_token %} {{ form.as_p }}
+                <input class="btn btn-primary" type="submit" value="Registrarse" />
+            </div>
+            </form>
+        </div>
+        <p class="mt-5 mb-3 text-muted text-center">¿Ya tienes cuenta? Inicia Sesión <a href="{% url 'login' %}">Aquí</a></p>
+    </div>
+</div>
+
+{% endblock %}

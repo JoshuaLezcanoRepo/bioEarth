@@ -1,0 +1,13 @@
+{% extends 'base.html' %} {% block title %}Categorias del Blog{% endblock %} {% block content %}
+
+<div class="container">
+    <div class="px-4 py-3 my-4 text-justify">
+        <h1 class="display-5 fw-bold">{{post.title}}</h1>
+        <div class="badge bg-primary text-wrap">
+            {% for item in cat_menu_list %}
+            <li><a class="dropdown-item" href="{% url 'category' item|slugify %}">{{ item }}</a></li>
+            {% endfor %}
+        </div>
+    </div>
+    {% endblock %}
+</div>

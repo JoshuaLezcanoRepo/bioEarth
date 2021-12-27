@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% block title %}Iniciar Sesión{% endblock %} {% block content %}
+
+<div class="container">
+    <div class="px-4 py-3 my-4 text-justify">
+        <h1 class="display-5 fw-bold text-center">Iniciar Sesión</h1>
+        <div class="mx-auto">
+            <div class="form-floating">
+                <form method="POST">
+                    <div class="d-grid gap-2">
+                    {% csrf_token %}
+                    <label for="inputPassword5" class="form-label">Nombre de Usuario</label>
+                    <input class="form-control" type="text" placeholder="Default input" aria-label="default input example" name="username">
+                    <label for="inputPassword5" class="form-label">Password</label>
+                    <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock" name="password">
+                    <br />
+                    <button class="btn btn-primary">Iniciar Sesión</button>
+                </div>
+                </form>
+                <p class="mt-5 mb-3 text-muted text-center">¿No tienes cuenta? Registrate <a href="{% url 'register' %}">Aquí</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+    {% endblock %}

@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="px-4 pt-5 my-5 text-center border-bottom">
+  <img class="d-block mx-auto mb-4"
+    src="https://www.ecoworldjute.com/wp-content/uploads/2018/11/Eco-World-Logo-copy.jpg" alt="" width="80" height="80">
+  <h1 class="display-4 fw-bold">Bio-Earth</h1>
+  <div class="col-lg-6 mx-auto">
+    <p class="lead mb-4 fw-normal">Es una agencia de noticias de asociación tipo no lucrativo, con el objetivo de informar a todo el mundo sobre los 17 Objetivos para el Desarrollo Sostenible</p>
+    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+    </div>
+  </div>
+  <div class="overflow-hidden" style="max-height: 30vh;">
+    <div class="container px-5">
+      <img src="http://www.nataliacarbonell.com/wp-content/uploads/2020/03/FullertonBotanicGarden.jpg"
+        class="img-fluid border rounded-3 shadow-lg mb-4" alt="Example image" width="700" height="500" loading="lazy">
+    </div>
+  </div>
+</div>
+
+<div class="container col-xxl-8 px-4 py-5">
+  <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+    <div class="col-10 col-sm-8 col-lg-6">
+      <iframe width="100%" height="500" src="https://www.youtube.com/embed/345IxGgjF9s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="col-lg-6">
+      <h1 class="display-5 fw-bold lh-1 mb-3">¿Qué son los 17 Objetivos de Desarrollo Sustentable?</h1>
+      <p class="lead fw-normal">El desarrollo sostenible se ha definido como el desarrollo capaz de satisfacer las necesidades del presente sin comprometer la capacidad de las futuras generaciones para satisfacer sus propias necesidades.</p>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <h1 class="display-4 fw-bold">Noticias</h1>
+  {% for post in object_list %}
+  <img src="{{ post.header_image.url }}" class="img-fluid">
+  <div class="p-5 mb-4 bg-light rounded-3 shadow p-3">
+    <div class="container-fluid py-5">
+      <h1 class="display-5 fw-bold">{{ post.title }}</h1>
+      <p class="col-md-8 fs-4">{{ post.snippet }}</p>
+      <a class="btn btn-primary" href="{% url 'article-detail' post.pk %}">Seguir leyendo</a>
+      <span class="text-muted text-center">Publicado por {{ post.author.first_name }} {{ post.author.last_name }} el
+        {{ post.post_date|date:'d F Y'}}</span>
+          <a href="{% url 'category' post.category|slugify %}">
+            <div class="badge bg-primary text-wrap">{{ post.category }}</div>
+          </a>
+          {% if user.is_authenticated %}
+          {% if user.id == post.author.id %}
+          <a href="{% url 'update_post' post.pk %}">Editar Post</a>
+          <a href="{% url 'delete_post' post.pk %}">Eliminar Post</a>
+          {% endif %}
+          {% endif %}
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+<div class="container my-5">
+  <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 shadow-lg">
+    <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
+      <h1 class="display-4 fw-bold lh-1">¡Actúa ahora!</h1>
+      <span class="navbar-toggler-icon"></span>
+      <p class="lead fw-normal">Cada uno de nosotros puede contribuir a limitar el calentamiento global y cuidar el
+        planeta. Si tomamos decisiones que tengan efectos menos perjudiciales para el medio ambiente, podemos ser parte
+        de la solución e influir en el cambio.</p>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+        <a type="button" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold" href="https://www.un.org/es/actnow/">Saber
+          más</a>
+      </div>
+    </div>
+    <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
+      <img class="rounded float-start"
+        src="https://blog.pdainternational.net/wp-content/uploads/2018/08/rawpixel-653764-unsplash.jpg" alt=""
+        width="720">
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <footer class="py-3 my-4">
+    <figure class="text-center">
+      <blockquote class="blockquote">
+        <p>"Llegar juntos es el principio. Mantenerse juntos, es el progreso. Trabajar juntos es el éxito."</p>
+      </blockquote>
+      <figcaption class="blockquote-footer">
+        Henry Ford
+      </figcaption>
+    </figure>
+    <p class="text-center text-muted">© 2021 Proyecto Final Informatorio</p>
+  </footer>
+</div>
+{% endblock %}

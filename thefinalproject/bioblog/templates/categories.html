@@ -1,0 +1,42 @@
+{% extends 'base.html' %} {% block title %}Categorias{% endblock %} {% block content %} {% if category_posts %}
+
+<div class="container">
+    <div class="px-4 py-3 my-4 text-justify">
+        <h1 class="display-5 fw-bold">{{cats}}</h1>
+        <div class="container">
+            {% for post in category_posts %}
+            <img src="{{ post.header_image.url }}" class="img-fluid">
+            <div class="p-5 mb-4 bg-light rounded-3 shadow p-3">
+                <div class="container-fluid py-5">
+                    <h1 class="display-5 fw-bold">{{ post.title }}</h1>
+                    <p class="col-md-8 fs-4">{{ post.snippet }}</p>
+                    <a class="btn btn-primary" href="{% url 'article-detail' post.pk %}">Seguir leyendo</a>
+                    <span class="text-muted text-center">Publicado por {{ post.author.first_name }} {{ post.author.last_name }} el
+                        {{ post.post_date|date:'d F Y'}}</span>
+                            <a href="{% url 'category' post.category|slugify %}">
+                                <div class="badge bg-primary text-wrap">{{ post.category }}</div>
+                            </a>
+                            {% if user.is_authenticated %}
+                            {% if user.id == post.author.id %}
+                            <a href="{% url 'update_post' post.pk %}">Editar Post</a>
+                            <a href="{% url 'delete_post' post.pk %}">Eliminar Post</a>
+                            {% endif %}
+                            {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% else %}
+
+<div class="container">
+    <div class="px-4 py-3 my-4 text-center">
+        <h1 class="display-5 fw-bold">Esta página no existe...</h1>
+    </div>
+</div>
+
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% block title %}Editar Perfil{% endblock %} {% block content %} {% if user.is_authenticated %} {% if user.id == profile.user.id %}
+<div class="container">
+    <div class="px-4 py-3 my-4 text-justify">
+        <h1 class="display-5 fw-bold">Editar Perfil</h1>
+        <div class="mx-auto">
+            <span class="navbar-toggler-icon"></span>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %} {{ form.as_p }}
+                <input class="btn btn-primary" type="submit" value="Actualizar Perfil" />
+            </form>
+        </div>
+    </div>
+</div>
+
+{% else %}
+
+<div class="container">
+    <div class="px-4 py-3 my-4 text-center">
+        <h1 class="display-5 fw-bold">No estás permitido para esta acción</h1>
+    </div>
+</div>
+{% endif %} {% else %}
+
+<div class="container">
+    <div class="px-4 py-3 my-4 text-center">
+        <h1 class="display-5 fw-bold">No estás permitido para esta acción</h1>
+    </div>
+</div>
+
+{% endif %} {% endblock %}

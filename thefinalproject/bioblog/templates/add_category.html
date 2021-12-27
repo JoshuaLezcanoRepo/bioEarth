@@ -1,0 +1,21 @@
+{% extends 'base.html' %} {% block title %}Crear Nueva Categoria{% endblock %} {% block content %} {% if user.is_authenticated %}
+<div class="container text-center">
+    <div class="px-4 py-3 my-4 text-center">
+        <h1 class="display-5 fw-bold">Crear Categoria</h1>
+        <label>Coloca el nombre de la nueva categoria</label>
+        <div class="mx-auto">
+            <span class="navbar-toggler-icon"></span>
+            <form method="post">
+                {% csrf_token %} {{ form.as_p }}
+                <input class="btn btn-primary" type="submit" value="Añadir Categoria" />
+            </form>
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="container">
+    <div class="px-4 py-3 my-4 text-center">
+        <h1 class="display-5 fw-bold">No estás permitido para esta acción</h1>
+    </div>
+</div>
+{% endif %} {% endblock %}
