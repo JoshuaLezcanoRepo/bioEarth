@@ -64,3 +64,7 @@ Bio-Earth cuenta con las siguientes funciones:
 8. Filtrado por Categoria
 
 ![This is an image](https://cdn.discordapp.com/attachments/546712576189399052/925150102933344286/cat2.png)
+
+9. Vista Previa de Noticia
+
+![This is an image](https://cdn.discordapp.com/attachments/546712576189399052/925150597613764739/pag_no.png)
