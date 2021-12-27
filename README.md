@@ -5,7 +5,7 @@
 
 *Es una agencia de noticias de asociación tipo no lucrativo, con el objetivo de informar a todo el mundo sobre los 17 Objetivos para el Desarrollo Sostenible.*
 
-- Vídeo Preview en Youtube: https://www.youtube.com/embed/VPouta8w_B0
+- Vídeo Preview en Youtube: https://www.youtube.com/watch?v=r4hCGeNvnxY
 
 Bio-Earth cuenta con las siguientes funciones:
 
