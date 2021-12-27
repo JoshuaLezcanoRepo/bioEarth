@@ -1,5 +1,8 @@
 # Bio-Earth
+### © 2021 Lezcano Genes Joshua David - Todos los Derechos Reservados
 **Proyecto Creado por Lezcano Genes Joshua David - Comisión 5 - Informatorio 2021**
+
+
 
 ## ¿Qué es Bio-Earth?
 
