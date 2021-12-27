@@ -1,5 +1,5 @@
 # Bio-Earth
-**Proyecto Creado por Lezcano Genes Joshua David - Comision 5 - Informatorio 2021**
+**Proyecto Creado por Lezcano Genes Joshua David - Comisión 5 - Informatorio 2021**
 
 ## ¿Qué es Bio-Earth?
 
@@ -57,11 +57,11 @@ Bio-Earth cuenta con las siguientes funciones:
 ![This is an image](https://cdn.discordapp.com/attachments/546712576189399052/925149487763165254/delete.png)
 
 7. Crear Categoria
-   - Nombre de Categoria
+   - Nombre de Categoría
 
 ![This is an image](https://cdn.discordapp.com/attachments/546712576189399052/925149704692596816/cat.png)
 
-8. Filtrado por Categoria
+8. Filtrado por Categoría
 
 ![This is an image](https://cdn.discordapp.com/attachments/546712576189399052/925150102933344286/cat2.png)
 
